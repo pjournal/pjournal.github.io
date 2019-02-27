@@ -17,6 +17,7 @@
 + dplyr join operations [1](http://stat545.com/bit001_dplyr-cheatsheet.html), [2](https://dplyr.tidyverse.org/reference/join.html)
 + ggplot2 ([html](files/ggplot2_lecture.html) \| [pdf](files/ggplot2_lecture.pdf))
 + Lubridate ([Link](https://lubridate.tidyverse.org/))
++ ODD Car Sales Data ([Link](https://pjournal.github.io/files/car_data_aggregate.rds))
 
 Currently in improvement. Temporarily you can use this [link](https://mef-bda503.github.io/)
 
