@@ -25,6 +25,10 @@
 
 + Machine Learning Part I ([html](https://mef-bda503.github.io/archive/fall17/files/intro_to_ml.html) \| [pdf](https://mef-bda503.github.io/archive/fall17/files/intro_to_ml.pdf))
 + Machine Learning Part II ([html](https://mef-bda503.github.io/archive/fall17/files/intro_to_ml_2.html) \| [pdf](https://mef-bda503.github.io/archive/fall17/files/intro_to_ml_2.pdf))
++ Machine Learning Parts Exercises (ps. not assignments)
+  + Exercise 1: Esoph and Youth Survey ([html](https://mef-bda503.github.io/archive/fall17/files/assignment_youth_survey.html) \| [pdf](https://mef-bda503.github.io/archive/fall17/files/assignment_youth_survey.pdf))
+  + Exercise 2: Spam Data ([html](https://mef-bda503.github.io/archive/fall17/files/assignment_spam_data.html) \| [pdf](https://mef-bda503.github.io/archive/fall17/files/assignment_spam_data.pdf))
+  + Exercise 3: Diamonds Data ([html](https://mef-bda503.github.io/archive/fall17/files/assignment_diamonds_data.html) \| [pdf](https://mef-bda503.github.io/archive/fall17/files/assignment_diamonds_data.pdf))
 
 Currently in improvement. Temporarily you can use this [link](https://mef-bda503.github.io/)
 
