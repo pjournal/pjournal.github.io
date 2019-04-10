@@ -1,4 +1,6 @@
-## Progress Journals Main
+## Active courses
+
++ [MEF BUS 432](mef-bus432/)
 
 # Phase 1: Start with Base R
 
@@ -18,6 +20,11 @@
 + ggplot2 ([html](files/ggplot2_lecture.html) \| [pdf](files/ggplot2_lecture.pdf))
 + Lubridate ([Link](https://lubridate.tidyverse.org/))
 + ODD Car Sales Data ([Link](https://pjournal.github.io/files/car_data_aggregate.rds))
+
+# Phase 4: Intro to Machine Learning
+
++ Machine Learning Part I ([html](https://mef-bda503.github.io/archive/fall17/files/intro_to_ml.html) \| [pdf](https://mef-bda503.github.io/archive/fall17/files/intro_to_ml.pdf))
++ Machine Learning Part II ([html](https://mef-bda503.github.io/archive/fall17/files/intro_to_ml_2.html) \| [pdf](https://mef-bda503.github.io/archive/fall17/files/intro_to_ml_2.pdf))
 
 Currently in improvement. Temporarily you can use this [link](https://mef-bda503.github.io/)
 
