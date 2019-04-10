@@ -1,5 +1,7 @@
 Welcome to MEF University BUS 432 Spring 2018 course webpage!
 
+Click for [Project Guidelines](project_guidelines.html)
+
 Lecture notes are in main [Pjournal page](https://pjournal.github.io/)
 
 This course benefits from **DataCamp for the Classroom** program. See details [here](https://www.datacamp.com/groups/education).
