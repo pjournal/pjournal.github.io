@@ -30,6 +30,11 @@
   + Exercise 2: Spam Data ([html](https://mef-bda503.github.io/archive/fall17/files/assignment_spam_data.html) \| [pdf](https://mef-bda503.github.io/archive/fall17/files/assignment_spam_data.pdf))
   + Exercise 3: Diamonds Data ([html](https://mef-bda503.github.io/archive/fall17/files/assignment_diamonds_data.html) \| [pdf](https://mef-bda503.github.io/archive/fall17/files/assignment_diamonds_data.pdf))
 
+
+# Bonus: Twitter Sentiment Analysis
+
++ Twitter Sentiment Analysis Tutorial ([html](files/twitter_sentiment.html))
+
 Currently in improvement. Temporarily you can use this [link](https://mef-bda503.github.io/)
 
 # Miscellaneous
