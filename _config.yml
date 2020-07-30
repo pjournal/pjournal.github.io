@@ -1,1 +1,3 @@
 theme: jekyll-theme-cayman
+title: Here is Title of Template
+description: Here is description. You can change these from _config.yml
