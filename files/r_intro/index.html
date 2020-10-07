@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Introduction to R</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Berk Orbay" />
+    <script src="libs/header-attrs-2.3/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Introduction to R
+## IE48A - Summer 2019-2020
+### Berk Orbay
+### Bogazici University
+### 2020-07-29 (updated: 2020-07-29)
+
+---
+
+
+---
+class: inverse, center, middle
+
+# Why R?
+
+
+
+
+---
+
+# Brief History of R
+
++ Created by Ross Ithaka and Robert Gentlemen of University of Auckland in 1993. It was derived from commercial **S** programming language (no kidding) which was created in 1976. 
+
++ Version 1.0.0 is released in 2000. Current version is 4.0.2. 
+
++ In 2017, CRAN (official package manager) had more than 10,000 packages. Today it has 16,065 packages.
+
++ Ranked as the 8th most popular language in TIOBE index as of July 2020. 
+
+### Sources
+
++ https://blog.revolutionanalytics.com/2020/07/the-history-of-r-updated-for-2020.html  
++ https://en.wikipedia.org/wiki/R_(programming_language)
++ https://bookdown.org/rdpeng/rprogdatascience/history-and-overview-of-r.html
++ https://cran.r-project.org/web/packages/
++ https://www.tiobe.com/tiobe-index/
+
+---
+
+# What is there to like R?
+
+*(Personal opinions)*
+
++ One of the two most powerful scripting languages in data analysis with Python. ([Julia](https://julialang.org/), first released in 2012, is an emerging third.)
+
++ Syntax and style focused on more non-computer scientists. (Especially tidyverse)
+
++ Excellently curated and managed package manager (CRAN).
+
++ A powerhouse focused on data analytics. Many packages include implementations of novel research papers which cannot be found elsewhere.
+
++ Supported by a powerful IDE (RStudio).
+
++ Low learning curve for data analysis, visualization, publishing and interactive analysis.
+
+**Note:** Python and R are not competitors. In many cases they complement each other. It is highly recommended to learn both.
+
+---
+
+# What are the disadvantages of R?
+
++ Not quite popular as Python in CS community. Support is lagging behind in some areas (especially in cloud computing) compared to Python. 
+
++ Despite a very convenient web framework (shiny), not greatly suited for scalable web applications without heavy modifications. (Still a great start)
+
++ Parallel computing is not native in R. So, speed can be an issue. 
+
++ R keeps data in-memory.
+
+Each disadvantage can be alleviated using a package or a solution. Its benefits far outweigh its disadvantages.
+
+---
+class: inverse, center, middle
+
+# Foundations
+
+---
+
+# Basic Features
+
++ R is a vector based language. When you call a function or do an operation, it is usually done for every member of the vector. (It is a powerful feature which requires some time to learn.)
+
++ Main data types are `numeric`, `character` and `logical`. But `factor`, `integer`, `date`, `dttm` (date-time) and some other types are also very common.
+
++ Main object types are `vector`, `matrix`, `data.frame` and `list`.
+
++ Assignment operators are "`&lt;-`" and "`=`". Aside from rare exceptions, they are the same (`x &lt;- 5` is the same as `x = 5`). Please be consistent in its use.
+
+
+```r
+x &lt;- 5
+x
+```
+
+```
+## [1] 5
+```
+
+
++ R console is completely interactive. You can run anything line by line.
+
+---
+
+# Data Types
+
++ Numeric (`double`): 1.33, 5422.22...
+  + There is also `integer`: 3, 5, 6...
+
++ Character (`character`): "a", "course", "pizza"...
+
++ Boolean (`logical`): Either `TRUE` or `FALSE`.
+
++ Date (`date`) and date-time (`dttm`): "`2020-07-28`", "`2020-07-29 14:00:05.12 UTC+3`"
+  + This part is a bit complicated with POSIXct and POSIXt types.
+  
++ Factor (`factor`): Numeric levels with labels of any kind.
+  + Encountered rarely in this course.
+
+---
+
+# Object Types - Vector
+
+Vector is the foundation stone of R object types. A variable with a single value is called "atomic" vector.
+
+Vectors with multiple values can be defined using `c()` ("combine") function.
+
+
+```r
+x &lt;- c("a","b","c")
+x
+```
+
+```
+## [1] "a" "b" "c"
+```
+
+A vector can have only a single data type. R conveniently converts vectors to the most appropriate data type.
+
+
+```r
+x &lt;- c(1,"hi",FALSE) # Vector of numeric, character and logical values
+x # converted to all character
+```
+
+```
+## [1] "1"     "hi"    "FALSE"
+```
+
+---
+
+# Object Types - Matrix
+
+Matrix is simply a two dimensional special vector. 
+
+
+```r
+mat1&lt;-matrix(1:9, ncol=3, nrow=3)
+mat1
+```
+
+```
+##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9
+```
+
+We can get a value from a matrix by providing its location as row/column coordinates or by simply by treating it as a vector.
+
+
+```r
+mat1[2,2]
+```
+
+```
+## [1] 5
+```
+
+```r
+mat1[5]
+```
+
+```
+## [1] 5
+```
+
+---
+
+# Object Types - Data Frame
+
+Data frame object type is still two dimensional but each column can be of a different data type.
+
+
+```r
+df1 &lt;- data.frame(some_numbers=1:3,
+                  some_names=c("Blood","Sweat","Tears"),
+                  some_logical=c(TRUE,FALSE,TRUE))
+df1
+```
+
+```
+##   some_numbers some_names some_logical
+## 1            1      Blood         TRUE
+## 2            2      Sweat        FALSE
+## 3            3      Tears         TRUE
+```
+
+
+Data frames are extremely powerful structures. Most of our work will be on data frames.
+
+**Note:** In `dplyr` package we will see a special version of data frames: `tibble`.
+---
+
+# Object Types - List
+
+Lists are like vectors but they can hold any object (including lists). You can also add names to lists.
+
+
+```r
+list1 &lt;- list(data_frame = df1,matrix = mat1,vector= x)
+list1
+```
+
+```
+## $data_frame
+##   some_numbers some_names some_logical
+## 1            1      Blood         TRUE
+## 2            2      Sweat        FALSE
+## 3            3      Tears         TRUE
+## 
+## $matrix
+##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9
+## 
+## $vector
+## [1] "1"     "hi"    "FALSE"
+```
+
+---
+
+# Object Types - Functions
+
+Functions are very useful types as they allow to run reusable code with dynamic inputs. For example, let's write a function to calculate the area of a triangle.
+
+
+```r
+area_of_triangle &lt;- function(height,base_length){
+  area &lt;- height*base_length/2
+  return(area) # Return value using return command
+}
+# You can assign the result of a function to a variable
+x &lt;- area_of_triangle(height = 3, base_length = 4) 
+x
+```
+
+```
+## [1] 6
+```
+
+
++ Rule of thumb is "If you need to copy paste the same code three times, write a function instead."
+
++ R has thousands of predefined functions to make life easier.
+
++ If you want to return multiple values return a list.
+
+---
+class: center, middle, inverse
+
+# Exercises
+
+Complete base R document before attempting to solve these.
+
+---
+
+# Exercise - Temperature Conversion
+
+Write a function to convert Fahrenheit to Celsius and Celsius to Fahrenheit.
+
+(X°C × 9/5) + 32 = Y°F
+
+
+
+
+```r
+convert_temperature(30,F_to_C = FALSE)
+```
+
+```
+## [1] 86
+```
+
+```r
+convert_temperature(86,F_to_C = TRUE)
+```
+
+```
+## [1] 30
+```
+
+
+
+---
+
+# Exercise - Future Value
+
+Write a function to calculate the future value of an investment given annually compounding interest over an amount of years.
+
+`$$FV = X * (1 + i) ^T$$`
+
+
+
+
+```r
+# 100 units of investments 7% interest rate over 5 years
+calculate_future_value(
+  investment = 100, interest = 0.07, duration_in_years = 5)
+```
+
+```
+## [1] 140.2552
+```
+
+---
+
+# Exercise - Color Hex Code
+
+Write a function to randomly generate n [color hex codes](https://www.color-hex.com/). You can use `letters` predefined vector.
+
+
+
+
+```r
+generate_hex_code(n=3)
+```
+
+```
+## [1] "#dd9bc6" "#da48e5" "#88937c"
+```
+
+---
+
+# Exercise - Calculate Probability of Dice
+
+Write a function which calculates the probability of getting **k** sixes in **n** throws of a die. Hint: Use binomial distribution.
+
+
+
+
+```r
+get_prob_dice(3,5)
+```
+
+```
+## [1] 0.03215021
+```
+
+
+
+---
+
+# Exercise - Rock, Scissors, Paper
+Write a rock scissors paper game which computer randomly chooses 
+
+
+
+
+```r
+rsp_game("rock")
+```
+
+```
+## [1] "I chose paper. You lose!"
+```
+
+---
+
+Check course webpage for more exercises...
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
